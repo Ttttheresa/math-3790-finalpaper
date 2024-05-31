@@ -1,0 +1,32 @@
+from PIL import Image
+import numpy as np
+
+# Load the images
+image1 = Image.open("/mnt/data/image.png")
+image2 = Image.open("/mnt/data/image.png")
+
+# Convert images to numpy arrays
+image1_array = np.array(image1)
+image2_array = np.array(image2)
+
+# Flatten the arrays to create one-dimensional vectors
+vector1 = image1_array.flatten()
+vector2 = image2_array.flatten()
+
+# Compute the dot product of vectors
+dot_product = np.dot(vector1, vector2)
+
+# Compute the norms of the vectors
+norm1 = np.linalg.norm(vector1)
+norm2 = np.linalg.norm(vector2)
+
+# Compute the cosine similarity
+cosine_similarity = dot_product / (norm1 * norm2)
+
+# Compute the angle in radians between the vectors
+angle_radians = np.arccos(cosine_similarity)
+
+# Convert the angle to degrees
+angle_degrees = np.degrees(angle_radians)
+
+cosine_similarity, angle_degrees
